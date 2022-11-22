@@ -14,12 +14,12 @@ class ApiManager {
         private fun getInstance(): Retrofit{
 
             if (retrofit != null) return retrofit!!
-
                 val loggingInterceptor = HttpLoggingInterceptor(
-                    logger = HttpLoggingInterceptor.Logger {
+                    logger = {
                         message -> Log.e("okHttp", message)
                     }
                 )
+
             loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
             val okHttp = OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
@@ -30,7 +30,6 @@ class ApiManager {
                 .baseUrl("https://newsapi.org/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-
             return retrofit!!
         }
 

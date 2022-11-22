@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">route-news-application</string>
+    <string name="pick_your_category_of_interest">pick your category of interest</string>
+
+    <string name="categories">Categories</string>
+    <string name="settings">Settings</string>
+    <string name="sports">Sports</string>
+    <string name="politics">Politics</string>
+    <string name="health">Health</string>
+    <string name="business">Business</string>
+    <string name="enviroment">Enviroment</string>
+    <string name="science">Science</string>
+
 </resources>

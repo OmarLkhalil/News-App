@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.omar.news_application.R
-import com.omar.route_news_application.model.Category
+import com.omar.route_news_application.models.Category
 
 class CategoriesFragment: Fragment() {
 

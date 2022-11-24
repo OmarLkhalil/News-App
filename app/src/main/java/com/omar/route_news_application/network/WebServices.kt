@@ -1,7 +1,7 @@
-package com.omar.route_news_application.api
+package com.omar.route_news_application.network
 
-import com.omar.route_news_application.model.NewsResponse
-import com.omar.route_news_application.model.SourcesResponse
+import com.omar.route_news_application.models.NewsResponse
+import com.omar.route_news_application.models.SourcesResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

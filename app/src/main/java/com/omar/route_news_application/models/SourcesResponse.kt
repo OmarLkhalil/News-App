@@ -1,4 +1,4 @@
-package com.omar.route_news_application.model
+package com.omar.route_news_application.models
 
 import com.google.gson.annotations.SerializedName
 

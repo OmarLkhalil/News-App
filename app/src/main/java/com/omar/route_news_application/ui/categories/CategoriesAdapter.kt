@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import com.omar.news_application.R
-import com.omar.route_news_application.model.Category
+import com.omar.route_news_application.models.Category
 
 class CategoriesAdapter(private val categories:List<Category>):
     RecyclerView.Adapter<CategoriesAdapter.ViewHolder>(){
@@ -72,6 +71,6 @@ class CategoriesAdapter(private val categories:List<Category>):
 
     var onItemClickListener:OnItemClickListener?=null
     interface OnItemClickListener{
-        fun onItemClick(pos:Int,category:Category)
+        fun onItemClick(pos:Int,category: Category)
     }
 }

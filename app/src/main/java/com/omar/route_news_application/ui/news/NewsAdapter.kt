@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.omar.news_application.R
-import com.omar.route_news_application.model.ArticlesItem
+import com.omar.route_news_application.models.ArticlesItem
 
 class NewsAdapter(var items:List<ArticlesItem?>?): RecyclerView.Adapter<NewsAdapter.ViewHolder>()
 

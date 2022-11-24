@@ -1,31 +1,18 @@
-package com.omar.route_news_application
+package com.omar.route_news_application.application
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
-import android.widget.ProgressBar
-import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.tabs.TabLayout
 import com.omar.news_application.R
-import com.omar.route_news_application.api.ApiManager
-import com.omar.route_news_application.model.Category
-import com.omar.route_news_application.model.NewsResponse
-import com.omar.route_news_application.model.Source
-import com.omar.route_news_application.model.SourcesResponse
-import com.omar.route_news_application.ui.SettingsFragment
+import com.omar.route_news_application.models.Category
+import com.omar.route_news_application.ui.settings.SettingsFragment
 import com.omar.route_news_application.ui.categories.CategoriesFragment
-import com.omar.route_news_application.ui.news.NewsAdapter
 import com.omar.route_news_application.ui.news.NewsFragment
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
-class MainActivity : AppCompatActivity() {
+class MainApplication : AppCompatActivity() {
 
     lateinit var drawerLayout  : DrawerLayout
     lateinit var drawerButton  : ImageView

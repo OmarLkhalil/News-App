@@ -6,21 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.core.view.isVisible
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import com.omar.news_application.R
+import com.omar.news_application.databinding.FragmentNewsBinding
 import com.omar.route_news_application.models.Category
 import com.omar.route_news_application.models.Source
 
 class NewsFragment: Fragment() {
 
+    private lateinit var binding: FragmentNewsBinding
     private lateinit var category: Category
-    private lateinit var tabLayout: TabLayout
-    private lateinit var progressBar: ProgressBar
-    private lateinit var recyclerView: RecyclerView
     private lateinit var viewModel: NewsViewModel
+
+    val adapter = NewsAdapter(null)
 
     companion object{
        fun getInstance(category: Category): NewsFragment{
@@ -31,31 +33,23 @@ class NewsFragment: Fragment() {
     }
 
 
-    val adapter = NewsAdapter(null)
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_news, container, false)
+    ): View{
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_news, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.recycleview.adapter = adapter
         viewModel = ViewModelProvider(this)[NewsViewModel::class.java]
-        initViews()
         accessLiveData()
         viewModel.getNewsSources(category)
     }
 
-
-    private fun initViews(){
-        tabLayout     = requireView().findViewById(R.id.tab_layout)
-        progressBar   = requireView().findViewById(R.id.progress_bar)
-        recyclerView  = requireView().findViewById(R.id.recycleview)
-        recyclerView.adapter = adapter
-    }
 
 
 
@@ -69,19 +63,19 @@ class NewsFragment: Fragment() {
         }
         viewModel.progressBarVisible.observe(viewLifecycleOwner){
             isVisible ->
-            progressBar.isVisible = isVisible
+            binding.progressBar.isVisible = isVisible
         }
     }
 
     private fun addSourcesToTabLayout(sources: List<Source?>?) {
         sources?.forEach{
-            val tab = tabLayout.newTab()
+            val tab = binding.tabLayout.newTab()
             tab.text = it?.name
             tab.tag = it
-            tabLayout.addTab(tab)
+            binding.tabLayout.addTab(tab)
         }
 
-        tabLayout.addOnTabSelectedListener(
+        binding.tabLayout.addOnTabSelectedListener(
             object : TabLayout.OnTabSelectedListener
             {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
@@ -96,6 +90,6 @@ class NewsFragment: Fragment() {
                 }
             }
         )
-        tabLayout.getTabAt(0)?.select()
+        binding.tabLayout.getTabAt(0)?.select()
     }
 }

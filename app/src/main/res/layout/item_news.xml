@@ -1,78 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_margin="15dp"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_gravity="center_horizontal"
-    android:layout_height="wrap_content">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+        <variable
+            name="ArticlesItem"
+            type="com.omar.route_news_application.models.ArticlesItem" />
+    </data>
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_margin="15dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content">
 
-        <ProgressBar
-            style="@android:style/Widget.ProgressBar.Small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@id/imv_news"
-            app:layout_constraintBottom_toBottomOf="@id/imv_news"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            >
-
-        </ProgressBar>
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/imv_news"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="190dp"
-            app:riv_corner_radius="12dp"
-            android:scaleType="fitXY"
-            tools:src="@drawable/benzima"
-            app:layout_constraintBottom_toTopOf="@id/txv_news_source"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-          >
-        </com.makeramen.roundedimageview.RoundedImageView>
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/txv_news_source"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="BBC NEWS"
-            android:layout_margin="5dp"
-            android:textSize="12sp"
-            android:textColor="@color/grey"
-            app:layout_constraintTop_toBottomOf="@id/imv_news"
-            app:layout_constraintStart_toStartOf="parent"
-            >
-        </TextView>
+            <ProgressBar
+                style="@android:style/Widget.ProgressBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/imv_news"
+                app:layout_constraintBottom_toBottomOf="@id/imv_news"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:id="@+id/txv_news_title"
-            android:layout_margin="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Benzema Wins Ballon d’Or After Years of Waiting His Turn "
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@+id/txv_news_source"
-            app:layout_constraintStart_toStartOf="parent"
-            >
-        </TextView>
+            </ProgressBar>
 
-        <TextView
-            android:id="@+id/txv_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text=" 3 hours ago"
-            app:layout_constraintTop_toBottomOf="@id/txv_news_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            >
-        </TextView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/imv_news"
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                app:riv_corner_radius="12dp"
+                android:scaleType="fitXY"
+                tools:src="@drawable/benzima"
+                app:layout_constraintBottom_toTopOf="@id/txv_news_source"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </com.makeramen.roundedimageview.RoundedImageView>
+
+            <TextView
+                android:id="@+id/txv_news_source"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{ArticlesItem.author}"
+                tools:text="BBC NEWS"
+                android:layout_margin="5dp"
+                android:textSize="12sp"
+                android:textColor="@color/grey"
+                app:layout_constraintTop_toBottomOf="@id/imv_news"
+                app:layout_constraintStart_toStartOf="parent">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/txv_news_title"
+                android:layout_margin="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{ArticlesItem.title}"
+                tools:text="Benzema Wins Ballon d’Or After Years of Waiting His Turn "
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@+id/txv_news_source"
+                app:layout_constraintStart_toStartOf="parent">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/txv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text=" 3 hours ago"
+                android:text="@{ArticlesItem.publishedAt}"
+                app:layout_constraintTop_toBottomOf="@id/txv_news_title"
+                app:layout_constraintEnd_toEndOf="parent">
+
+            </TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+</layout>
